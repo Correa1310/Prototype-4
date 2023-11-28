@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
         public bool hasPowerup = true;
         public GameObject powerupIndicator;
         
-     
-
+        
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
             playerRb.AddForce(FocalPoint.transform.forward * Speed * forwardInput);
 
-            powerupIndicator.transform.position = transform.position + new Vector3 (0, 0.5f, 0);
+        powerupIndicator.transform.position = transform.position;
         }
     private void OnTriggerEnter(Collider other)
     {
