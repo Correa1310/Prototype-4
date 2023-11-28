@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float powerupStreangth = 15.0f;
+        private float powerupStreangth = 15.0f;
         private Rigidbody playerRb;
         public float Speed = 5f;
         private GameObject FocalPoint;
-        public bool hasPowerup = false;
+        public bool hasPowerup = true;
         public GameObject powerupIndicator;
         
      
@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
             float forwardInput = Input.GetAxis("Vertical");
 
             playerRb.AddForce(FocalPoint.transform.forward * Speed * forwardInput);
+
+            powerupIndicator.transform.position = transform.position + new Vector3 (0, 0.5f, 0);
         }
     private void OnTriggerEnter(Collider other)
     {
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         hasPowerup = false;
+        powerupIndicator.gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
